@@ -277,5 +277,3 @@
 &#x20; </table>
 
 
-
-[5302ba72e518a43.bmp](https://github.com/jl8pcj/packer/blob/main/diagram.pdf)
