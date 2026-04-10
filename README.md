@@ -8,297 +8,296 @@
 
 
 
-<!-- A0〜A3 ミラー出力 -->
+&#x20; <!-- A0〜A3 ミラー出力 -->
 
-<table>
+&#x20; <table>
 
-  <caption>A0〜A3 入力とミラー出力対応</caption>
+&#x20;   <caption>A0〜A3 入力とミラー出力対応</caption>
 
-  <tr>
+&#x20;   <tr>
 
-    <th>入力ピン</th>
+&#x20;     <th>入力ピン</th>
 
-    <th>ボタン動作</th>
+&#x20;     <th>ボタン動作</th>
 
-    <th>出力ピン</th>
+&#x20;     <th>出力ピン</th>
 
-    <th>出力名</th>
+&#x20;     <th>出力名</th>
 
-    <th>動作内容</th>
+&#x20;     <th>動作内容</th>
 
-  </tr>
+&#x20;   </tr>
 
-  <tr>
+&#x20;   <tr>
 
-    <td>A0</td>
+&#x20;     <td>A0</td>
 
-    <td>押す（LOW）</td>
+&#x20;     <td>押す（LOW）</td>
 
-    <td>D2, D12</td>
+&#x20;     <td>D2, D12</td>
 
-    <td>sol4A</td>
+&#x20;     <td>sol4A</td>
 
-    <td>HIGH（反転ミラー）</td>
+&#x20;     <td>HIGH（反転ミラー）</td>
 
-  </tr>
+&#x20;   </tr>
 
-  <tr>
+&#x20;   <tr>
 
-    <td>A1</td>
+&#x20;     <td>A1</td>
 
-    <td>押す（LOW）</td>
+&#x20;     <td>押す（LOW）</td>
 
-    <td>D3, D12</td>
+&#x20;     <td>D3, D12</td>
 
-    <td>sol910</td>
+&#x20;     <td>sol910</td>
 
-    <td>HIGH（反転ミラー）</td>
+&#x20;     <td>HIGH（反転ミラー）</td>
 
-  </tr>
+&#x20;   </tr>
 
-  <tr>
+&#x20;   <tr>
 
-    <td>A2</td>
+&#x20;     <td>A2</td>
 
-    <td>押す（LOW）</td>
+&#x20;     <td>押す（LOW）</td>
 
-    <td>D4, D12</td>
+&#x20;     <td>D4, D12</td>
 
-    <td>sol3A</td>
+&#x20;     <td>sol3A</td>
 
-    <td>HIGH（反転ミラー）</td>
+&#x20;     <td>HIGH（反転ミラー）</td>
 
-  </tr>
+&#x20;   </tr>
 
-  <tr>
+&#x20;   <tr>
 
-    <td>A3</td>
+&#x20;     <td>A3</td>
 
-    <td>押す（LOW）</td>
+&#x20;     <td>押す（LOW）</td>
 
-    <td>D5, D12</td>
+&#x20;     <td>D5, D12</td>
 
-    <td>sol3B</td>
+&#x20;     <td>sol3B</td>
 
-    <td>HIGH（反転ミラー）</td>
+&#x20;     <td>HIGH（反転ミラー）</td>
 
-  </tr>
+&#x20;   </tr>
 
-</table>
+&#x20; </table>
 
 
 
-<!-- A4 → D10 ロック -->
+&#x20; <!-- A4 → D10 ロック -->
 
-<table>
+&#x20; <table>
 
-  <caption>A4 入力と D10 ロック動作</caption>
+&#x20;   <caption>A4 入力と D10 ロック動作</caption>
 
-  <tr>
+&#x20;   <tr>
 
-    <th>入力ピン</th>
+&#x20;     <th>入力ピン</th>
 
-    <th>トリガ条件</th>
+&#x20;     <th>トリガ条件</th>
 
-    <th>出力ピン</th>
+&#x20;     <th>出力ピン</th>
 
-    <th>出力名</th>
+&#x20;     <th>出力名</th>
 
-    <th>動作内容</th>
+&#x20;     <th>動作内容</th>
 
-  </tr>
+&#x20;   </tr>
 
-  <tr>
+&#x20;   <tr>
 
-    <td>A4</td>
+&#x20;     <td>A4</td>
 
-    <td>押した瞬間（HIGH → LOW）</td>
+&#x20;     <td>押した瞬間（HIGH → LOW）</td>
 
-    <td>D10</td>
+&#x20;     <td>D10</td>
 
-    <td>sol4B</td>
+&#x20;     <td>sol4B</td>
 
-    <td>0.5秒後に ON、2秒経過で自動 OFF</td>
+&#x20;     <td>0.5秒後に ON、2秒経過で自動 OFF</td>
 
-  </tr>
+&#x20;   </tr>
 
-</table>
+&#x20; </table>
 
 
 
-<!-- A5 → シーケンス制御 -->
+&#x20; <!-- A5 → シーケンス制御 -->
 
-<table>
+&#x20; <table>
 
-  <caption>A5 入力とシーケンス制御</caption>
+&#x20;   <caption>A5 入力とシーケンス制御</caption>
 
-  <tr>
+&#x20;   <tr>
 
-    <th>入力ピン</th>
+&#x20;     <th>入力ピン</th>
 
-    <th>操作</th>
+&#x20;     <th>操作</th>
 
-    <th>動作</th>
+&#x20;     <th>動作</th>
 
-  </tr>
+&#x20;   </tr>
 
-  <tr>
+&#x20;   <tr>
 
-    <td>A5</td>
+&#x20;     <td>A5</td>
 
-    <td>押して離す</td>
+&#x20;     <td>押して離す</td>
 
-    <td>停止状態 → シーケンス開始</td>
+&#x20;     <td>停止状態 → シーケンス開始</td>
 
-  </tr>
+&#x20;   </tr>
 
-  <tr>
+&#x20;   <tr>
 
-    <td>A5</td>
+&#x20;     <td>A5</td>
 
-    <td>押して離す</td>
+&#x20;     <td>押して離す</td>
 
-    <td>実行中 → 一時停止</td>
+&#x20;     <td>実行中 → 一時停止</td>
 
-  </tr>
+&#x20;   </tr>
 
-  <tr>
+&#x20;   <tr>
 
-    <td>A5</td>
+&#x20;     <td>A5</td>
 
-    <td>押して離す</td>
+&#x20;     <td>押して離す</td>
 
-    <td>一時停止 → 再開</td>
+&#x20;     <td>一時停止 → 再開</td>
 
-  </tr>
+&#x20;   </tr>
 
-</table>
+&#x20; </table>
 
 
 
-<!-- シーケンス詳細 -->
+&#x20; <!-- シーケンス詳細 -->
 
-<table>
+&#x20; <table>
 
-  <caption>シーケンス出力（D6〜D9, D12）</caption>
+&#x20;   <caption>シーケンス出力（D6〜D9, D12）</caption>
 
-  <tr>
+&#x20;   <tr>
 
-    <th>ステップ</th>
+&#x20;     <th>ステップ</th>
 
-    <th>出力ピン</th>
+&#x20;     <th>出力ピン</th>
 
-    <th>出力名</th>
+&#x20;     <th>出力名</th>
 
-    <th>時間</th>
+&#x20;     <th>時間</th>
 
-    <th>内容</th>
+&#x20;     <th>内容</th>
 
-  </tr>
+&#x20;   </tr>
 
-  <tr>
+&#x20;   <tr>
 
-    <td>0</td>
+&#x20;     <td>0</td>
 
-    <td>D6, D12</td>
+&#x20;     <td>D6, D12</td>
 
-    <td>seq1, accel</td>
+&#x20;     <td>seq1, accel</td>
 
-    <td>2秒</td>
+&#x20;     <td>2秒</td>
 
-    <td>ON → OFF</td>
+&#x20;     <td>ON → OFF</td>
 
-  </tr>
+&#x20;   </tr>
 
-  <tr>
+&#x20;   <tr>
 
-    <td>1</td>
+&#x20;     <td>1</td>
 
-    <td>なし</td>
+&#x20;     <td>なし</td>
 
-    <td>休止</td>
+&#x20;     <td>休止</td>
 
-    <td>0.3秒</td>
+&#x20;     <td>0.3秒</td>
 
-    <td>待機</td>
+&#x20;     <td>待機</td>
 
-  </tr>
+&#x20;   </tr>
 
-  <tr>
+&#x20;   <tr>
 
-    <td>2</td>
+&#x20;     <td>2</td>
 
-    <td>D7, D12</td>
+&#x20;     <td>D7, D12</td>
 
-    <td>seq2, accel</td>
+&#x20;     <td>seq2, accel</td>
 
-    <td>2秒</td>
+&#x20;     <td>2秒</td>
 
-    <td>ON → OFF</td>
+&#x20;     <td>ON → OFF</td>
 
-  </tr>
+&#x20;   </tr>
 
-  <tr>
+&#x20;   <tr>
 
-    <td>3</td>
+&#x20;     <td>3</td>
 
-    <td>なし</td>
+&#x20;     <td>なし</td>
 
-    <td>休止</td>
+&#x20;     <td>休止</td>
 
-    <td>0.3秒</td>
+&#x20;     <td>0.3秒</td>
 
-    <td>待機</td>
+&#x20;     <td>待機</td>
 
-  </tr>
+&#x20;   </tr>
 
-  <tr>
+&#x20;   <tr>
 
-    <td>4</td>
+&#x20;     <td>4</td>
 
-    <td>D8, D12</td>
+&#x20;     <td>D8, D12</td>
 
-    <td>seq3, accel</td>
+&#x20;     <td>seq3, accel</td>
 
-    <td>2秒</td>
+&#x20;     <td>2秒</td>
 
-    <td>ON → OFF</td>
+&#x20;     <td>ON → OFF</td>
 
-  </tr>
+&#x20;   </tr>
 
-  <tr>
+&#x20;   <tr>
 
-    <td>5</td>
+&#x20;     <td>5</td>
 
-    <td>なし</td>
+&#x20;     <td>なし</td>
 
-    <td>休止</td>
+&#x20;     <td>休止</td>
 
-    <td>0.3秒</td>
+&#x20;     <td>0.3秒</td>
 
-    <td>待機</td>
+&#x20;     <td>待機</td>
 
-  </tr>
+&#x20;   </tr>
 
-  <tr>
+&#x20;   <tr>
 
-    <td>6</td>
+&#x20;     <td>6</td>
 
-    <td>D9, D12</td>
+&#x20;     <td>D9, D12</td>
 
-    <td>seq4, accel</td>
+&#x20;     <td>seq4, accel</td>
 
-    <td>2秒</td>
+&#x20;     <td>2秒</td>
 
-    <td>ON → OFF（シーケンス終了）</td>
+&#x20;     <td>ON → OFF（シーケンス終了）</td>
 
-  </tr>
+&#x20;   </tr>
 
-</table>
+&#x20; </table>
 
 
 
 </body>
 
 </html>
-
