@@ -277,8 +277,6 @@
 &#x20; </table>
 
 
-
-&#x20;   <img width="1123" height="794" alt="Image" src="https://github.com/user-attachments/assets/7296b1f1-6577-4b5e-b68d-719465899569" />
 &#x20;   ![Image](https://github.com/user-attachments/assets/b9b59b58-fd54-4fad-bc14-59bcd5ac1060)
 
 
