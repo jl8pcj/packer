@@ -1,18 +1,6 @@
 
 
-&#x20; <h1>入出力対応表</h1>
-
-&#x20; <style>
-
-&#x20;   table { border-collapse: collapse; margin: 12px 0; }
-
-&#x20;   th, td { border: 1px solid #555; padding: 4px 8px; }
-
-&#x20;   th { background: #eee; }
-
-&#x20;   caption { font-weight: bold; margin-bottom: 4px; }
-
-&#x20; </style>
+<h1>入出力対応表</h1>
 
 
 
