@@ -5,8 +5,8 @@ const int inA0 = A0;
 const int inA1 = A1;
 const int inA2 = A2;
 const int inA3 = A3;
-const int inA4 = A4;   // ★新：A4 でロック動作
-const int inA5 = A5;   // ★シーケンス開始ボタン
+const int inA4 = A4;   // A4 → D10 ロック
+const int inA5 = A5;   // シーケンス開始ボタン
 
 // ===============================
 // 出力ピン
@@ -22,8 +22,8 @@ const int seq2 = 7;     // D7
 const int seq3 = 8;     // D8
 const int seq4 = 9;     // D9
 
-const int sol4B = 10;   // ロック（A4で動作）
-const int accel = 12;   // アクセル（シーケンス中も ON）
+const int sol4B = 10;   // ロック
+const int accel = 12;   // アクセル（D2〜D9 と完全連動）
 
 // ===============================
 // A4 → D10（押した瞬間 → 0.5秒後に 2秒 ON）
@@ -51,7 +51,7 @@ void setup() {
   pinMode(inA1, INPUT_PULLUP);
   pinMode(inA2, INPUT_PULLUP);
   pinMode(inA3, INPUT_PULLUP);
-  pinMode(inA4, INPUT_PULLUP);   // ★追加
+  pinMode(inA4, INPUT_PULLUP);
   pinMode(inA5, INPUT_PULLUP);
 
   pinMode(sol4A, OUTPUT);
@@ -78,31 +78,32 @@ void setup() {
 void loop() {
 
   // -------- A0〜A3 ミラー出力 --------
-  digitalWrite(sol4A,  digitalRead(inA0) == LOW ? HIGH : LOW);
-  digitalWrite(sol910, digitalRead(inA1) == LOW ? HIGH : LOW);
-  digitalWrite(sol3A,  digitalRead(inA2) == LOW ? HIGH : LOW);
-  digitalWrite(sol3B,  digitalRead(inA3) == LOW ? HIGH : LOW);
+  bool out2 = (digitalRead(inA0) == LOW);
+  bool out3 = (digitalRead(inA1) == LOW);
+  bool out4 = (digitalRead(inA2) == LOW);
+  bool out5 = (digitalRead(inA3) == LOW);
+
+  digitalWrite(sol4A,  out2 ? HIGH : LOW);
+  digitalWrite(sol910, out3 ? HIGH : LOW);
+  digitalWrite(sol3A,  out4 ? HIGH : LOW);
+  digitalWrite(sol3B,  out5 ? HIGH : LOW);
 
   // -------- A4 → D10（押した瞬間 → 0.5秒後に 2秒 ON）--------
-  bool nowA4 = (digitalRead(inA4) == LOW);  // 押されている = LOW
+  bool nowA4 = (digitalRead(inA4) == LOW);
 
-  // ★押された瞬間（HIGH → LOW）
   if (prevA4 == HIGH && nowA4 == LOW) {
     a4Pending = true;
-    a4PendingStart = millis();   // 0.5秒待つ
+    a4PendingStart = millis();
   }
-
   prevA4 = nowA4;
 
-  // ★0.5秒経過したらロック開始
   if (a4Pending && millis() - a4PendingStart >= 500) {
     a4Pending = false;
     a4Active = true;
     a4Start = millis();
-    digitalWrite(sol4B, HIGH);     // D10 ON
+    digitalWrite(sol4B, HIGH);
   }
 
-  // ★2秒経過でロックOFF
   if (a4Active && millis() - a4Start >= 2000) {
     digitalWrite(sol4B, LOW);
     a4Active = false;
@@ -110,6 +111,21 @@ void loop() {
 
   // -------- シーケンス --------
   handleSequence();
+
+
+// -------- D12（accel）完全連動 --------
+bool anyOutput =
+  digitalRead(sol4A)  == HIGH ||
+  digitalRead(sol910) == HIGH ||
+  digitalRead(sol3A)  == HIGH ||
+  digitalRead(sol3B)  == HIGH ||
+  digitalRead(seq1)   == HIGH ||
+  digitalRead(seq2)   == HIGH ||
+  digitalRead(seq3)   == HIGH ||
+  digitalRead(seq4)   == HIGH;
+
+digitalWrite(accel, anyOutput ? HIGH : LOW);
+
 }
 
 // ===============================
@@ -120,7 +136,6 @@ void allSeqOff() {
   digitalWrite(seq2, LOW);
   digitalWrite(seq3, LOW);
   digitalWrite(seq4, LOW);
-  digitalWrite(accel, LOW);   // ★休止・停止時は必ず OFF
 }
 
 // ===============================
@@ -129,7 +144,6 @@ void allSeqOff() {
 void handleSequence() {
   bool nowA5 = (digitalRead(inA5) == LOW);
 
-  // -------- A5 押して離した瞬間 --------
   if (prevA5 == LOW && nowA5 == HIGH) {
 
     if (!seqRunning && !seqPaused) {
@@ -159,66 +173,58 @@ void handleSequence() {
 
   switch (seqStep) {
 
-    case 0:   // D6 + D12 → 2秒
+    case 0:
       digitalWrite(seq1, HIGH);
-      digitalWrite(accel, HIGH);
       if (now - seqTimer >= 2000) {
         digitalWrite(seq1, LOW);
-        digitalWrite(accel, LOW);
         seqStep = 1;
         seqTimer = now;
       }
       break;
 
-    case 1:   // 休止 0.3秒
+    case 1:
       if (now - seqTimer >= 300) {
         seqStep = 2;
         seqTimer = now;
-        digitalWrite(seq2, HIGH);
-        digitalWrite(accel, HIGH);
       }
       break;
 
-    case 2:   // D7 + D12 → 2秒
+    case 2:
+      digitalWrite(seq2, HIGH);
       if (now - seqTimer >= 2000) {
         digitalWrite(seq2, LOW);
-        digitalWrite(accel, LOW);
         seqStep = 3;
         seqTimer = now;
       }
       break;
 
-    case 3:   // 休止 0.3秒
+    case 3:
       if (now - seqTimer >= 300) {
         seqStep = 4;
         seqTimer = now;
-        digitalWrite(seq3, HIGH);
-        digitalWrite(accel, HIGH);
       }
       break;
 
-    case 4:   // D8 + D12 → 2秒
+    case 4:
+      digitalWrite(seq3, HIGH);
       if (now - seqTimer >= 2000) {
         digitalWrite(seq3, LOW);
-        digitalWrite(accel, LOW);
         seqStep = 5;
         seqTimer = now;
       }
       break;
 
-    case 5:   // 休止 0.3秒
+    case 5:
       if (now - seqTimer >= 300) {
         seqStep = 6;
         seqTimer = now;
-        digitalWrite(seq4, HIGH);
-        digitalWrite(accel, HIGH);
       }
       break;
 
-    case 6:   // D9 + D12 → 2秒
+    case 6:
+      digitalWrite(seq4, HIGH);
       if (now - seqTimer >= 2000) {
         digitalWrite(seq4, LOW);
-        digitalWrite(accel, LOW);
         seqRunning = false;
         seqPaused = false;
       }
