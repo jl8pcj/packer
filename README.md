@@ -1,3 +1,5 @@
+※ArduinoIDE＞Tools＞processor＞ATmega328P (Old Bootloader)  
+※Tools＞Board＞Arduino Nano
 
 
 <h1>入出力対応表</h1>
